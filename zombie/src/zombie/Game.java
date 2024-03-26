@@ -49,6 +49,13 @@ public class Game {
 		
 		if(sel == 1) {
 			move();
+			
+			if(hero.getPosition() == 5) {
+				attackByZombie();
+			}
+			else if(hero.getPosition() == 10) {
+				
+			}
 		}else if(sel == 2) {
 			exit();
 		}
@@ -57,6 +64,44 @@ public class Game {
 	private void move() {
 		pos += 1;
 		hero.setPosition(pos);
+	}
+	
+	private void attackByZombie() {
+		System.out.println("좀비를 만났다! 공격 모드로 전환!");
+		while(true) {
+			System.out.printf("(1) 공격하기 (2) 포션(보유량 : %d개)\n", hero.getPotion());
+			int sel = inputNumber("선택");
+			if(sel == 1) {
+				zombie.attack(hero);
+				hero.attack(zombie);
+				if(isHeroDead()) {
+					break;
+				}
+				if(isZombieDead()) {
+					break;
+				}
+			}
+			else if(sel == 2) {
+				
+			}
+		}
+	}
+	
+	private boolean isHeroDead() {
+		if(hero.getHp() == 0) {
+			System.err.println("사망...");
+			isExit = true;
+			return true;
+		}
+		return false;
+	}
+	
+	private boolean isZombieDead() {
+		if(zombie.getHp() == 0) {
+			System.out.println("좀비를 무찔렀다 -!!");
+			return true;
+		}
+		return false;
 	}
 	
 	private void exit() {
