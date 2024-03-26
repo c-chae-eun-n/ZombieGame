@@ -37,5 +37,18 @@ public class Hero extends Unit{
 		
 	}
 	
-	
+	public void recovery() {
+		if(potion == 0) {
+			System.err.println("포션이 없다!!");
+			return;
+		}
+		int curHp = this.getHp();
+		int recovery = curHp + 50;
+		if(recovery > 100)
+			recovery = 100;
+		
+		this.setHp(recovery);
+		potion --;
+		System.out.println("히어로 회복!!\n히어로 현재 체력 : " + this);
+	}
 }
