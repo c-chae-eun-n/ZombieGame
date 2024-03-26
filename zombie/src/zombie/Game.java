@@ -43,7 +43,29 @@ public class Game {
 		System.out.println("(1) 앞으로 이동 (2) 종료");
 	}
 	
-	public void run() {
+	private void runMenu() {
+		printMove();
+		int sel = inputNumber("이동하기");
 		
+		if(sel == 1) {
+			move();
+		}else if(sel == 2) {
+			exit();
+		}
+	}
+	
+	private void move() {
+		pos += 1;
+		hero.setPosition(pos);
+	}
+	
+	private void exit() {
+		isExit = true;
+	}
+	
+	public void run() {
+		while(!isExit) {
+			runMenu();
+		}
 	}
 }
