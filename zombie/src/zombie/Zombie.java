@@ -8,8 +8,16 @@ public class Zombie extends Unit {
 	}
 	
 	@Override
-	void attack(Unit unit) {
+	void attack(Unit hero) {
+		power = random.nextInt(this.getMax()) + 5;
+		System.out.printf("좀비 %d의 공격력으로 공격!\n", power);
 		
+		int curHp = hero.getHp();
+		hero.setHp(curHp - power);
+		if(hero.getHp() <= 0) {
+			hero.setHp(0);
+		}
+		System.out.printf("히어로 현재 체력 : %d\n", hero.getHp());
 	}
 	
 }
