@@ -3,9 +3,9 @@ package zombie;
 public class Boss extends Zombie {
 	private int secondHp;
 
-	public Boss(int max, int firstHp, int position, int secondHp) {
-		super(max, firstHp, position);
-		this.setSecondHp(secondHp);
+	public Boss(int position, int firstHp, int max, int secondHp) {
+		super(position, firstHp, max);
+		this.secondHp = secondHp;
 	}
 
 	public int getSecondHp() {
