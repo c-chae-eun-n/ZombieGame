@@ -24,7 +24,22 @@ public class Game {
 		return instance;
 	}
 	
+	private int inputNumber(String message) {
+		int number = 0;
+		
+		try {
+			System.out.print(message + " : ");
+			String input = scan.next();
+			number = Integer.parseInt(input);
+		} catch (Exception e) {
+			System.err.println("숫자만 입력하세요.");
+		}
+		
+		return number;
+	}
+	
+	
 	public void run() {
-
+		
 	}
 }
