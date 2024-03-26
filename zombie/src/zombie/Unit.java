@@ -1,14 +1,18 @@
 package zombie;
 
-public class Unit {
+import java.util.Random;
+
+abstract public class Unit {
 	public final int MAX_HP;
 	private int hp;
 	private int position;
+	Random random;
 	
-	public Unit(int hp, int position) {
-		MAX_HP = hp;
+	public Unit(int max, int hp, int position) {
+		MAX_HP = max;
 		this.hp = hp;
 		this.position = position;
+		random = new Random();
 	}
 	
 	public int getMax() {
@@ -31,4 +35,5 @@ public class Unit {
 		this.position = position;
 	}
 	
+	abstract void attack(Unit unit);
 }
