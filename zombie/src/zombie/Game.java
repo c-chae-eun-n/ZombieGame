@@ -82,7 +82,7 @@ public class Game {
 				}
 			}
 			else if(sel == 2) {
-				
+				hero.recovery();
 			}
 		}
 	}
