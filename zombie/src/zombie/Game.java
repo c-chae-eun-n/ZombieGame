@@ -38,6 +38,10 @@ public class Game {
 		return number;
 	}
 	
+	private void printMove() {
+		System.out.println("현재 위치 : " + pos);
+		System.out.println("(1) 앞으로 이동 (2) 종료");
+	}
 	
 	public void run() {
 		
