@@ -16,4 +16,18 @@ public class Boss extends Zombie {
 		this.secondHp = secondHp;
 	}
 	
+	public void shield(Hero hero) {
+		int rNum = random.nextInt(3);
+		if(rNum == 0) {
+			hero.setPower(0);
+			System.out.println("보스 쉴드 발동!!");
+			System.out.println("히어로 공격 실패!!");
+		}
+	}
+	
+	@Override
+	void attack(Unit hero) {
+		super.attack(hero);
+	}
+	
 }
