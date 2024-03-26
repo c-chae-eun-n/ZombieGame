@@ -17,7 +17,7 @@ public class Zombie extends Unit {
 		if(hero.getHp() <= 0) {
 			hero.setHp(0);
 		}
-		System.out.printf("히어로 현재 체력 : %d\n", hero.getHp());
+		System.out.println("히어로 현재 체력 : " + hero);
 	}
 	
 }
