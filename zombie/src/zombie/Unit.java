@@ -13,7 +13,7 @@ abstract public class Unit {
 		this.position = position;
 		MAX_HP = hp;
 		this.hp = hp;
-		this.setMax(max);
+		this.max = max;
 		random = new Random();
 	}
 	
@@ -46,4 +46,9 @@ abstract public class Unit {
 	}
 	
 	abstract void attack(Unit unit);
+	
+	@Override
+	public String toString() {
+		return String.format("[%d/%d]", this.hp, MAX_HP);
+	}
 }
