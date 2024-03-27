@@ -8,7 +8,7 @@ public class Zombie extends Unit {
 	}
 	
 	@Override
-	void attack(Unit hero) {
+	public void attack(Unit hero) {
 		power = random.nextInt(this.getMax()) + 5;
 		System.out.printf("좀비 %d의 공격력으로 공격!\n", power);
 		
