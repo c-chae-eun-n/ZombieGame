@@ -1,11 +1,13 @@
 package zombie;
 
 public class Boss extends Zombie {
+	public final int MAX_HP;
 	private int secondHp;
 
 	public Boss(int position, int firstHp, int max, int secondHp) {
 		super(position, firstHp, max);
 		this.secondHp = secondHp;
+		MAX_HP = secondHp;
 	}
 
 	public int getSecondHp() {
@@ -14,6 +16,10 @@ public class Boss extends Zombie {
 
 	public void setSecondHp(int secondHp) {
 		this.secondHp = secondHp;
+	}
+	
+	public int getMaxHp() {
+		return this.MAX_HP;
 	}
 	
 	public void shield(Hero hero) {
