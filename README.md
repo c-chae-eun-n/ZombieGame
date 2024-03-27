@@ -19,16 +19,13 @@
     4.  포션을 선택하면 일정량 체력을 회복한다.
     5.  포션 버튼 옆에는 포션의 잔여량이 표시되고, 전부 사용하면 더는 사용할 수 없게된다.
     6.  좀비를 무찌를 시 전투가 종료되고, 랜덤으로  1~5개의 포션을 얻게 된다.
-    7.  보스를 무찌를 시 전투가 종료되고, 게임에서 승리한다.
+    7.  보스를 무찌를 시 전투가 종료되고, 게임에서 승리한다. <br><br>
 
-    <br>
-    <br>
 > Class Diagram (UML)
 > 
-![diagram](https://github.com/c-chae-eun-n/ZombieGame/blob/master/images/zombieGame%20Diagram.jpg?raw=true)
+![diagram](https://github.com/c-chae-eun-n/ZombieGame/blob/master/images/zombieGame%20Diagram.jpg?raw=true) <br><br>
 
-   <br>
-   <br>
 > Demo
 >
-![Demo]()
+<!-- <img src="" width="300"> -->
+<img src="https://github.com/c-chae-eun-n/ZombieGame/blob/master/images/zombieGame-_2_.gif?raw=true" width="400">
