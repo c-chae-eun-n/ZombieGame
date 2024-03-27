@@ -10,6 +10,10 @@ public class Hero extends Unit{
 		this.potion = potion;
 	}
 	
+	public void setPower(int power) {
+		this.power = power;
+	}
+	
 	public int getPotion() {
 		return this.potion;
 	}
@@ -20,21 +24,48 @@ public class Hero extends Unit{
 	
 	@Override
 	public void attack(Unit enemy) {
-		if(enemy instanceof Boss) {
-//			Boss boss = (Boss) enemy;
-//			
-//			power = random.nextInt(this.getMax()) + 5;
-			
-		}else {
+		if (enemy instanceof Boss) {
+			Boss boss = (Boss) enemy;
+
+			power = random.nextInt(this.getMax()) + 5;
+			System.out.printf("히어로 %d의 공격력으로 공격!!\n", power);
+			if (boss.getHp() >= 0) {
+				int temp = boss.getHp() - power;
+				if(temp == 0 && boss.getSecondHp() == 0) {
+					boss.setHp(0);
+				}else if (temp <= 0) {
+					boss.setHp(boss.getSecondHp());
+					boss.setSecondHp(0);
+					System.out.println("Boss Chapter 2!!");
+					return;
+				}
+				boss.setHp(boss.getHp() - power);
+				System.out.println("Boss 현재 체력 : " + boss);
+			} else if (boss.getHp() == 0 && boss.getSecondHp() >= 0) {
+				power = random.nextInt(this.getMax()) + 5;
+				boss.shield(this);
+				if (power == 0) {
+					return;
+				}
+				System.out.printf("히어로 %d의 공격력으로 공격!!\n", power);
+				int temp = boss.getSecondHp() - power;
+				if (temp <= 0) {
+					boss.setSecondHp(0);
+				}
+				boss.setSecondHp(boss.getSecondHp() - power);
+				System.out.println("Boss 현재 체력 : " + boss);
+			}
+
+		} else {
 			power = random.nextInt(this.getMax()) + 5;
 			System.out.printf("히어로 %d의 공격력으로 공격!!\n", power);
 			int curHp = enemy.getHp();
 			enemy.setHp(curHp - power);
-			if(enemy.getHp() <= 0)
+			if (enemy.getHp() <= 0)
 				enemy.setHp(0);
 			System.out.println("좀비 현재 체력 : " + enemy);
 		}
-		
+
 	}
 	
 	public void recovery() {
