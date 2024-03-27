@@ -26,8 +26,8 @@ public class Hero extends Unit{
 	public void attack(Unit enemy) {
 		if (enemy instanceof Boss) {
 			Boss boss = (Boss) enemy;
-			power = random.nextInt(this.getMax()) + 5;
-			System.out.printf("히어로 %d의 공격력으로 공격!!\n", power); 
+			
+			powerByHero(); 
 			if (boss.getHp() >= 0 && boss.getSecondHp() == 0) {
 				boss.shield(this);
 				if (power == 0) {
@@ -57,8 +57,7 @@ public class Hero extends Unit{
 			}
 
 		} else {
-			power = random.nextInt(this.getMax()) + 5;
-			System.out.printf("히어로 %d의 공격력으로 공격!!\n", power);
+			powerByHero();
 			int curHp = enemy.getHp();
 			enemy.setHp(curHp - power);
 			if (enemy.getHp() <= 0)
@@ -66,6 +65,11 @@ public class Hero extends Unit{
 			System.out.println("좀비 현재 체력 : " + enemy);
 		}
 
+	}
+	
+	private void powerByHero() {
+		power = random.nextInt(this.getMax()) + 5;
+		System.out.printf("히어로 %d의 공격력으로 공격!!\n", power);
 	}
 	
 	public void recovery() {
