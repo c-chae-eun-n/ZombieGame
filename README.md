@@ -27,5 +27,7 @@
 > 
 ![diagram](https://github.com/c-chae-eun-n/ZombieGame/blob/master/images/zombieGame%20Diagram.jpg?raw=true)
 
+   <br>
+   <br>
 > Demo
 ![]()
