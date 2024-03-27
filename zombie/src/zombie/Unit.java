@@ -45,7 +45,7 @@ abstract public class Unit {
 		this.max = max;
 	}
 	
-	abstract void attack(Unit unit);
+	abstract public void attack(Unit unit);
 	
 	@Override
 	public String toString() {
