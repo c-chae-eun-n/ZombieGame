@@ -14,7 +14,7 @@ public class Game {
 	
 	private Game() {
 		pos = 1;
-		hero = new Hero(1, 100, 20, 5);
+		hero = new Hero(1, 100, 20, 10);
 		zombie = new Zombie(5, 50, 10);
 		boss = new Boss(10, 70, 30, 150);
 	}
@@ -120,6 +120,7 @@ public class Game {
 	private boolean isZombieDead() {
 		if(zombie.getHp() == 0) {
 			System.out.println("좀비를 무찔렀다 -!!");
+			zombie.drop(hero);
 			return true;
 		}
 		return false;
