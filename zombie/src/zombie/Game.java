@@ -14,7 +14,7 @@ public class Game {
 	
 	private Game() {
 		pos = 1;
-		hero = new Hero(1, 100, 20, 2);
+		hero = new Hero(1, 100, 20, 5);
 		zombie = new Zombie(5, 50, 10);
 		boss = new Boss(10, 70, 30, 150);
 	}
@@ -54,7 +54,7 @@ public class Game {
 				attackByZombie();
 			}
 			else if(hero.getPosition() == 10) {
-				
+				attackByBoss();
 			}
 		}else if(sel == 2) {
 			exit();
@@ -87,6 +87,27 @@ public class Game {
 		}
 	}
 	
+	private void attackByBoss() {
+		System.out.println("보스를 만났다! 공격 모드로 전환!");
+		while(true) {
+			System.out.printf("(1) 공격하기 (2) 포션(보유량 : %d개)\n", hero.getPotion());
+			int sel = inputNumber("선택");
+			if(sel == 1) {
+				boss.attack(hero);
+				hero.attack(boss);
+				if(isHeroDead()) {
+					break;
+				}
+				if(isBossDead()) {
+					break;
+				}
+			}
+			else if(sel == 2) {
+				hero.recovery();
+			}
+		}
+	}
+	
 	private boolean isHeroDead() {
 		if(hero.getHp() == 0) {
 			System.err.println("사망...");
@@ -99,6 +120,16 @@ public class Game {
 	private boolean isZombieDead() {
 		if(zombie.getHp() == 0) {
 			System.out.println("좀비를 무찔렀다 -!!");
+			return true;
+		}
+		return false;
+	}
+	
+	private boolean isBossDead() {
+		if(boss.getHp() == 0 && boss.getSecondHp() == 0) {
+			System.out.println("보스를 무찔렀다 -!!");
+			System.out.println("GAME CLEAR~~!!");
+			isExit = true;
 			return true;
 		}
 		return false;
