@@ -26,33 +26,33 @@ public class Hero extends Unit{
 	public void attack(Unit enemy) {
 		if (enemy instanceof Boss) {
 			Boss boss = (Boss) enemy;
-
 			power = random.nextInt(this.getMax()) + 5;
-			System.out.printf("히어로 %d의 공격력으로 공격!!\n", power);
-			if (boss.getHp() >= 0) {
+			System.out.printf("히어로 %d의 공격력으로 공격!!\n", power); 
+			if (boss.getHp() >= 0 && boss.getSecondHp() == 0) {
+				boss.shield(this);
+				if (power == 0) {
+					System.out.printf("Boss 현재 체력 : [%d/%d]\n", boss.getHp(), boss.getMaxHp());
+					return;
+				}
+
 				int temp = boss.getHp() - power;
-				if(temp == 0 && boss.getSecondHp() == 0) {
+				if (temp <= 0) {
 					boss.setHp(0);
-				}else if (temp <= 0) {
+					return;
+				}
+				boss.setHp(boss.getHp() - power);
+				System.out.printf("Boss 현재 체력 : [%d/%d]\n", boss.getHp(), boss.getMaxHp());
+			} else if (boss.getHp() >= 0 && boss.getSecondHp() != 0) {
+				int temp = boss.getHp() - power;
+				if (temp == 0 && boss.getSecondHp() == 0) {
+					boss.setHp(0);
+				} else if (temp <= 0) {
 					boss.setHp(boss.getSecondHp());
 					boss.setSecondHp(0);
 					System.out.println("Boss Chapter 2!!");
 					return;
 				}
 				boss.setHp(boss.getHp() - power);
-				System.out.println("Boss 현재 체력 : " + boss);
-			} else if (boss.getHp() == 0 && boss.getSecondHp() >= 0) {
-				power = random.nextInt(this.getMax()) + 5;
-				boss.shield(this);
-				if (power == 0) {
-					return;
-				}
-				System.out.printf("히어로 %d의 공격력으로 공격!!\n", power);
-				int temp = boss.getSecondHp() - power;
-				if (temp <= 0) {
-					boss.setSecondHp(0);
-				}
-				boss.setSecondHp(boss.getSecondHp() - power);
 				System.out.println("Boss 현재 체력 : " + boss);
 			}
 
