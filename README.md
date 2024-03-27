@@ -6,7 +6,7 @@
 
 > Class Diagram (UML)
 > 
-![diagram](images/zombieGame Diagram.jpg)
+![diagram](https://github.com/c-chae-eun-n/ZombieGame/blob/master/images/zombieGame%20Diagram.jpg?raw=true)
 
 > Demo
 ![]()
